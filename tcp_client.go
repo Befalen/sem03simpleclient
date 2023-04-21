@@ -4,6 +4,7 @@ import (
 	"net"
 	"log"
 	"os"
+    "github.com/befalen/REP03/is105sem03/mycrypt"
 )
 
 func main() {
@@ -14,6 +15,9 @@ func main() {
     
 	log.Println("os.Args[1] = ", os.Args[1])
 
+    kryptertMelding := mycrypt.Krypter([]rune(os.Args[1]), mycrypt.ALF_SEM03, 4)
+    log.Println("Kryptert melding: ", string(kryptertMelding))
+    _, err = conn.Write([]byte(string(kryptertMelding)))
  	_, err = conn.Write([]byte(os.Args[1]))
 	if err != nil {
 		log.Fatal(err)
